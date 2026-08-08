@@ -1,39 +1,90 @@
-#Create a simple program that uses a while loop to iterate over a range of numbers from 1 to 10.
-i=1
-while i<=10:
-    print(i)
-    i+=1
-
-#Implement a condition to print only the even numbers within this range using the continue statement.
-i=1
-while i <=10:
-    i+=1
-    if i%2==1:
-        continue
-    print(i)
+# Problem 1 – Nested while
+# What is the problem asking?
+# Generate all pairs from 1–5 and print only pairs whose sum is even.
+# Things needed for logic:
+# • Outer while → first number (i)
+# • Inner while → second number (j)
+# • Addition: i+j
+# • Condition: (i+j)%2==0
+# Example dry run:
+# i=1, j=1 → sum=2 → print
+# i=1, j=2 → sum=3 → skip
+# Example output:
+# (1,1)
+# (1,3)
+# (1,5)
+# (2,2)...
+for i in range(1,6):
+    for j in range(1,6):
+        sum1=i+j
+        if sum1%2!=0:
+            continue
+        else:
+            print((i,j))
         
-#Add another condition that stops the loop when it encounters the number 8, utilizing the break statement.
-i=1
-while i <=10:
-    i+=1
-    if i%2==1:
-        continue
-    if i==8:
-        break
-    print(i)
-#Ensure your program includes comments explaining the purpose of each segment, especially where break and continue are used.
+# Problem 2 – Nested while
+# What is the problem asking?
+# Generate all pairs from 1–10 and print only pairs whose product is greater than 30. Also count total
+# pairs.
+# Things needed for logic:
+# • Outer while
+# • Inner while
+# • Multiplication: i*j
+# • Condition: i*j > 30
+# • Counter variable
+# Example output:
+# (4,8) → 32
+# (4,9) → 36
+count=0
+for i in range(1,11):
+    for j in range(1,11):
+        if i*j>30:
+            count+=1
+            print((i,j))
+        else:
+            continue
+print("total pairs:",count)
 
-i=1   		#first i value is 1
-while i <=10:  	#while check the condition i.e i<=10 untill the i value becomes 10
-    i+=1     	# for every iteration i value increase by 1
-    if i%2==1:  	#if check for the odd numbers 
-        continue 	#continue skip the odd numbers
-    if i==8:  
-        break  	# break stops the loop when i reaches 8
-print(i)
+# Problem 3 – For inside While
+# What is the problem asking?
+# Keep asking user for numbers until 0 is entered. For each number, find factors and their sum.
+# Things needed for logic:
+# • while num!=0
+# • for i in range(1,num+1)
+# • Factor condition: num%i==0
+# • Sum variable
+# Example:
+# Input:12
+# Factors:1 2 3 4 6 12
+# Sum:28
+n=int(input("enter any number:"))
+while n!=0:
+    s=0
+    for i in range(1,n+1):
+        if n%i==0:
+            print("factors:",i,end=" ")
+            s+=i
+    print("sum:",s)
+    n=int(input("enter any number:"))
 
-# Execute your program and document the output to verify it meets the expected behavior.
-# Output Explanation:
-# continue statement skip all odd numbers. So, only even numbers are printed.
-# break statement stops the loop when i becomes 8.
-# Program prints the even numbers before 8 and then stops.
+# Problem 4 – While inside For
+# What is the problem asking?
+# Given numbers=[12,7,20,9], for each number print values from 1 to that number and count evens.
+# Things needed for logic:
+# • for through list
+# • while loop for counting
+# • Even condition: i%2==0
+# • Counter variable
+# Example output:
+# 12 → Even count: 6
+# 7 → Even count: 3
+l=[12,7,20,9]
+for num in l:
+    i=1
+    count=0
+    while i<=num:
+        print(i)
+        if i%2==0:
+            count+=1
+        i+=1
+    print(num,"even count:",count)
